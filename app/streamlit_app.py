@@ -46,6 +46,9 @@ decisionID1 = ''
 image0 = Image.open('../img/1800flowers_logo.PNG')
 st.image(image0,width=500)
 #start building the web application using the streamlit components
+UPDATE_LOC = 'VSCode for Desktop'
+st.write(f'This app was last updated in {UPDATE_LOC}')
+
 st.title('Propensity to Purchase')
 
 st.write("This web app predicts the likelihood for a customer to make a purchase")
