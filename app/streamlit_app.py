@@ -83,9 +83,9 @@ if st.button('Predict'):
     #call viya
     EM_CLASSIFICATION,EM_PROBABILITY,ERROR = scoreModel(RecencyScore, FrequencyScore, MonetaryScore)
     if EM_CLASSIFICATION == '1':
-        str_output = f':blue[Customer predicted to purchase with probability of {round(100*EM_PROBABILITY,2)}]'
+        str_output = f':blue[Customer predicted to purchase with probability of {round(100*EM_PROBABILITY,2)}%]'
     else:
-        str_output = f':red[Customer predicted to NOT purchase with probability of {round(100*EM_PROBABILITY,2)}]'
+        str_output = f':red[Customer predicted to NOT purchase with probability of {round(100*EM_PROBABILITY,2)}%]'
         
     st.write(str_output)
 
