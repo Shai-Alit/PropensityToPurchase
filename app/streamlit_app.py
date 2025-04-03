@@ -45,9 +45,9 @@ decisionID1 = ''
 if os.path.exists('./img'):
     img_loc = './img'
 else:
-    img_loc = '../img_loc'
+    img_loc = '../img'
 
-image0 = Image.open(img_loc + '/1800flowers_logo.PNG')
+image0 = Image.open(img_loc + '/1800flowers_logo.png')
 st.image(image0,width=500)
 #start building the web application using the streamlit components
 UPDATE_LOC = 'Viya Workbench'
