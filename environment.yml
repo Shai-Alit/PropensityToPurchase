@@ -1,0 +1,6 @@
+name: streamlit_example
+dependencies:
+ - python=3.11.11
+ - pip
+ - pip:
+   - streamlit

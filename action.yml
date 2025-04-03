@@ -1,0 +1,6 @@
+#action.yaml
+name: 'Hello World'
+description: 'streamlit'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
