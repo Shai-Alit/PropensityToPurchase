@@ -16,6 +16,7 @@ from viyapy import viya_utils
 from scoreModel import scoreModel
 import os
 import json
+import settings
 
 #optional - input username
 username='seford'
@@ -42,12 +43,9 @@ protocol='https'
 
 #the ID of the entire decision flow
 decisionID1 = ''
-if os.path.exists('./img'):
-    img_loc = './img'
-else:
-    img_loc = '../img'
 
-image0 = Image.open(img_loc + '/1800flowers_logo.png')
+
+image0 = Image.open(settings.img_loc + '/1800flowers_logo.png')
 st.image(image0,width=500)
 #start building the web application using the streamlit components
 UPDATE_LOC = 'Viya Workbench'
@@ -92,6 +90,6 @@ if st.button('Predict'):
     st.write(str_output)
 
 
-image_footer = Image.open(img_loc + '/SAS_logo2.png')
+image_footer = Image.open(settings.img_loc + '/SAS_logo2.png')
 st.image(image_footer,caption='Powered by SAS',width=100)
 #TODO - add footer
