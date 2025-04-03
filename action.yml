@@ -1,5 +1,5 @@
 #action.yaml
-name: 'Hello World'
+name: 'Propensity to Purchase'
 description: 'streamlit'
 runs:
   using: 'docker'
