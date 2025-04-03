@@ -15,18 +15,25 @@ import plotly.express as px
 from viyapy import viya_utils
 from scoreModel import scoreModel
 import os
+import json
 
 #optional - input username
 username='seford'
 
-if 'WORKSPACE' in os.environ:
-    if os.path.exists(os.environ['WORKSPACE'] + '/cred.json'):
+if 'token' not in locals():
+    if 'WORKSPACE' in os.environ:
+        WORKSPACE = os.environ['WORKSPACE']
+    else:
+        WORKSPACE = 'C:/certs'
+        
+    if os.path.exists(WORKSPACE + '/creds.json'):
         with open('C:/certs/creds.json') as f:
             creds = json.load(f)
             
         token = creds['verde']['token']
-
+    
         host=creds['verde']['server_url']
+
 
 protocol='https'
 
@@ -36,7 +43,7 @@ protocol='https'
 #the ID of the entire decision flow
 decisionID1 = ''
 
-image0 = Image.open('./img/Hallmark_logo.svg.PNG')
+image0 = Image.open('../img/1800flowers_logo.PNG')
 st.image(image0,width=500)
 #start building the web application using the streamlit components
 st.title('Propensity to Purchase')
@@ -69,10 +76,15 @@ MonetaryScore = st.slider(label = 'MonetaryScore', min_value = 0,
 if st.button('Predict'):
     
     #call viya
-    EM_CLASSIFICATION,EM_PROBABILITY,ERROR = scoreModel(10, 10, 10)
-    
-    
+    EM_CLASSIFICATION,EM_PROBABILITY,ERROR = scoreModel(RecencyScore, FrequencyScore, MonetaryScore)
+    if EM_CLASSIFICATION == '1':
+        str_output = f':blue[Customer predicted to purchase with probability of {round(100*EM_PROBABILITY,2)}]'
+    else:
+        str_output = f':red[Customer predicted to NOT purchase with probability of {round(100*EM_PROBABILITY,2)}]'
+        
+    st.write(str_output)
 
-image_footer = Image.open('./img/SAS_logo2.png')
+
+image_footer = Image.open('../img/SAS_logo2.png')
 st.image(image_footer,caption='Powered by SAS',width=100)
 #TODO - add footer
