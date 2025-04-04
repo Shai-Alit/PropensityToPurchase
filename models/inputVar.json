@@ -1,0 +1,20 @@
+[
+    {
+        "name": "RecencyScore",
+        "level": "interval",
+        "type": "decimal",
+        "length": 8
+    },
+    {
+        "name": "FrequencyScore",
+        "level": "interval",
+        "type": "decimal",
+        "length": 8
+    },
+    {
+        "name": "MonetaryScore",
+        "level": "interval",
+        "type": "decimal",
+        "length": 8
+    }
+]

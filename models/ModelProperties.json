@@ -1,0 +1,17 @@
+{
+    "name": "scikit-learn_LogReg",
+    "description": "Scikit-learn Logistic Regression for Propensity to Purchase",
+    "scoreCodeType": "python",
+    "trainTable": "",
+    "trainCodeType": "Python",
+    "algorithm": "scikit-learn.LogisticRegression",
+    "function": "classification",
+    "targetVariable": "Ordered",
+    "targetEvent": "1",
+    "targetLevel": "Binary",
+    "eventProbVar": "P_1",
+    "modeler": "Sean T Ford",
+    "tool": "Python 3",
+    "toolVersion": "3.11.11",
+    "properties": []
+}
