@@ -67,7 +67,6 @@ st.write(f'This app was last updated in {UPDATE_LOC}')
 st.title('Propensity to Purchase')
 
 st.write("This web app predicts the likelihood for a customer to make a purchase")
-options=['1.0','2.0']
 
 def on_change():
     st.session_state.disabled = not st.session_state.disabled
@@ -108,6 +107,7 @@ if "disabled" not in st.session_state:
         
 selected_orch_tool = st.selectbox(label='Select an Orchestration Tool',options=['GitHub','SAS Viya'],index=0,on_change=on_change)
 selected_flow_version = st.selectbox(label='Select a version',options=st.session_state.revisions,index=len(st.session_state.revisions)-1,disabled=st.session_state.disabled)
+use_py_model = st.checkbox(label='Use Python Model',disabled=st.session_state.disabled)
 
 st.header('Dynamic Model Input')
 
@@ -145,14 +145,27 @@ if st.button('Predict'):
         
         moduleID1 = moduleID_prefix + selected_flow_version.replace('.','_')
         
-        #capture the variable values in a dictionary
-        features = {'RecencyScore': RecencyScore,
-                'FrequencySCore': FrequencyScore,
-                'MonetaryScore': MonetaryScore
-                }
-    
+        if float(selected_flow_version) > 2:
+            
+            if use_py_model:
+                model_to_run = 1
+            else:
+                model_to_run = -1
+            
+            #capture the variable values in a dictionary
+            features = {'RecencyScore': RecencyScore,
+                    'FrequencySCore': FrequencyScore,
+                    'MonetaryScore': MonetaryScore,
+                    'model_to_run':model_to_run
+                    }
+        else:
 
-     
+            #capture the variable values in a dictionary
+            features = {'RecencyScore': RecencyScore,
+                    'FrequencySCore': FrequencyScore,
+                    'MonetaryScore': MonetaryScore
+                    }
+
         #create data frame to display values in a table
         features_df  = pd.DataFrame([features])
     
