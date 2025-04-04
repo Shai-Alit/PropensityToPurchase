@@ -25,3 +25,4 @@ preds = clf.predict(x)
 probs = clf.predict_proba(x)
 
 pickle.dump(clf, open(WORKSPACE + '/github/PropensityToPurchase/models/logreg.pickle', 'wb'))
+print('completed')
