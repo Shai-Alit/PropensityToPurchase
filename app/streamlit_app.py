@@ -99,7 +99,7 @@ def get_revisions(baseUrl,decisionId,accessToken):
     
 if "disabled" not in st.session_state:
     st.session_state.disabled = True
-    response = get_revisions(baseUrl,decisionID1,token)
+    #response = get_revisions(baseUrl,decisionID1,token)
     revisions = ['1.0','2.0','3.0']
     #for i_ in response['items']:
         #revisions.append(str(i_['majorRevision']) + '.' + str(i_['minorRevision']))
