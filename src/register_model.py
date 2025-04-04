@@ -31,6 +31,7 @@ except:
 
 # Save to same folder as pickle file
 modelPklName = 'logreg.pickle'
+pklFileName = modelPklName + '.pickle'
 #tool_version = str(sys.version_info.major)+'_'+str(sys.version_info.minor)+'_'+str(sys.version_info.micro)
 
 #pklFileName = modelPklName+'_V'+tool_version+'.pkl'
