@@ -23,7 +23,7 @@ import traceback
 #optional - input username
 username='seford'
 
-if 'token' not in locals():
+if 'st.secrets.token' not in locals():
     if 'WORKSPACE' in os.environ:
         WORKSPACE = os.environ['WORKSPACE']
     else:
@@ -36,6 +36,9 @@ if 'token' not in locals():
         token = creds['verde']['token']
     
         host = creds['verde']['server_url']
+else:
+    token = st.secrets.token
+    host = st.secrets.host
 
 
 protocol='https'
