@@ -40,6 +40,8 @@ else:
     token = st.secrets.token
     host = st.secrets.host
 
+token = st.secrets.token
+host = st.secrets.host
 
 protocol='https'
 
