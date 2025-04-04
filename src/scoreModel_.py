@@ -4,7 +4,7 @@ import pandas as pd
 import settings
 from sklearn.linear_model import LogisticRegression
 
-def score_this_model(RecencyScore,FrequencyScore,MonetaryScore):
+def scoreModel(RecencyScore,FrequencyScore,MonetaryScore):
     "Output: EM_CLASSIFICATION,EM_PROBABILITY,_ERROR"
     _ERROR="No Errors or Warnings."
     EM_CLASSIFICATION = str(0)
