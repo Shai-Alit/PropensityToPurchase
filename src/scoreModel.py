@@ -4,8 +4,8 @@ import pandas as pd
 import settings
 
 def scoreModel(RecencyScore,FrequencyScore,MonetaryScore):
-   "Output: EM_CLASSIFICATION,EM_PROBABILITY,ERROR"
-   ERROR="No Errors or Warnings."
+   "Output: EM_CLASSIFICATION,EM_PROBABILITY,_ERROR"
+   _ERROR="No Errors or Warnings."
    EM_CLASSIFICATION = str(0)
    EM_PROBABILITY = -1
    ## Load pickled model
@@ -23,8 +23,8 @@ def scoreModel(RecencyScore,FrequencyScore,MonetaryScore):
       EM_CLASSIFICATION = str(preds[0])
       EM_PROBABILITY = float(probs[0,preds[0]])
    except Exception as error:
-      ERROR = str(error)
+      _ERROR = str(error)
       print(error)
 
 
-   return EM_CLASSIFICATION,EM_PROBABILITY,ERROR
+   return EM_CLASSIFICATION,EM_PROBABILITY,_ERROR
