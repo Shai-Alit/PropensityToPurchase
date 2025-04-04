@@ -100,9 +100,9 @@ def get_revisions(baseUrl,decisionId,accessToken):
 if "disabled" not in st.session_state:
     st.session_state.disabled = True
     response = get_revisions(baseUrl,decisionID1,token)
-    revisions = []
-    for i_ in response['items']:
-        revisions.append(str(i_['majorRevision']) + '.' + str(i_['minorRevision']))
+    revisions = ['1.0','2.0','3.0']
+    #for i_ in response['items']:
+        #revisions.append(str(i_['majorRevision']) + '.' + str(i_['minorRevision']))
     st.session_state.revisions = revisions
         
 selected_orch_tool = st.selectbox(label='Select an Orchestration Tool',options=['GitHub','SAS Viya'],index=0,on_change=on_change)
