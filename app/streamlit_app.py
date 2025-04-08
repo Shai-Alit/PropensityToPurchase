@@ -33,9 +33,9 @@ if 'st.secrets.token' not in locals():
         with open('C:/certs/creds.json') as f:
             creds = json.load(f)
             
-        token = creds['verde']['token']
+        st.secrets.token = creds['verde']['token']
     
-        host = creds['verde']['server_url']
+        st.secrets.host = creds['verde']['server_url']
 else:
     token = st.secrets.token
     host = st.secrets.host
@@ -57,11 +57,11 @@ decisionID1 = '8daf7f69-5e3e-4eb9-a0a5-0423fcf64fb2'
 
 
 image0 = Image.open(settings.img_loc + '/1800flowers_logo.png')
-st.image(image0,width=500)
+st.image(image0,width=250)
 #start building the web application using the streamlit components
 #UPDATE_LOC = 'Viya Workbench'
 #UPDATE_LOC = 'Viya Enterprise'
-UPDATE_LOC = 'Viya Workbench'
+UPDATE_LOC = 'VS Code Desktop'
 st.write(f'This app was last updated in {UPDATE_LOC}')
 
 st.title('Propensity to Purchase')
@@ -185,6 +185,8 @@ if st.button('Predict'):
         str_output = f':blue[{Purchase_Chance}. Customer predicted to purchase with probability of {round(100*EM_PROBABILITY,2)}%]'
     else:
         str_output = f':red[{Purchase_Chance}. Customer predicted to NOT purchase with probability of {round(100*EM_PROBABILITY,2)}%]'
+        if 'recommendation' in output_dict and output_dict['recommendation'] != '':
+            str_output += output_dict['recommendation']
         
     st.write(str_output)
 
