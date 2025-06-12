@@ -62,6 +62,7 @@ st.image(image0,width=250)
 #UPDATE_LOC = 'Viya Workbench'
 #UPDATE_LOC = 'Viya Enterprise'
 UPDATE_LOC = 'VS Code Desktop'
+UPDATE_LOC = 'Spyder Desktop'
 st.write(f'This app was last updated in {UPDATE_LOC}')
 
 st.title('Propensity to Purchase')
@@ -135,6 +136,7 @@ MonetaryScore = st.slider(label = 'MonetaryScore', min_value = 0,
 if st.button('Predict'):
 
     Purchase_Chance = ''
+    output_dict = {}
     
     #call viya
     
