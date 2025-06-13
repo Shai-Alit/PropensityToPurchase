@@ -36,9 +36,11 @@ if 'st.secrets.token' not in locals():
         st.secrets.token = creds['verde']['token']
     
         st.secrets.host = creds['verde']['server_url']
+        
 else:
     token = st.secrets.token
     host = st.secrets.host
+    os.environ['REQUESTS_CA_BUNDLE'] = './rainbowtrustedcert24.pem'
 
 token = st.secrets.token
 host = st.secrets.host
