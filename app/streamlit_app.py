@@ -20,6 +20,74 @@ import settings
 import requests
 import traceback
 
+def gen_viya_inputs(feature_dict):
+    ret_string = None
+    feature_list = []
+    try:
+        for k,v in feature_dict.items():
+            if type(v) == str:
+                feature_list.append(f'{{"name": "{k}_", "value" : "{v}"}}')
+            else:
+                feature_list.append(f'{{"name": "{k}_", "value" : {v}}}')
+                
+        feature_str = str.join(',',feature_list)
+        
+        ret_string ='{"inputs" : [' + feature_str + ']}'
+    except Exception as e:
+        msg = f'Error in gen_viya_inputs function: \n{e} \n {traceback.extract_tb(e.__traceback__)}'
+        print(msg)
+        
+    return ret_string
+
+def post(url1, contentType, accept, accessToken, body):
+    req = None
+    try:
+        sess = requests.Session()
+        
+        headers = {"Accept": accept,
+        "Authorization": "bearer " + accessToken,
+        "Content-Type": contentType }
+        
+        # Convert the request body to a JSON object.
+        reqBody = json.loads(body)
+        
+        # Post the request.
+        req = sess.post(url1, json=reqBody, headers=headers, verify=False)
+        
+        #clean up
+        sess.close()
+    except Exception as e:
+        msg = f'Error in post function: \n{e} \n {traceback.extract_tb(e.__traceback__)}'
+        print(msg)
+    
+    return req
+
+def call_id_api(baseUrl, accessToken, feature_dict,moduleID):
+    r_j = None
+    
+    try:
+        #create the request in format viya wants
+        requestBody = gen_viya_inputs(feature_dict)
+    
+        # Define the content and accept types for the request header.
+        contentType = "application/json"
+        acceptType = "application/json"
+        
+        # Define the request URL.
+        masModuleUrl = "/microanalyticScore/modules/" + moduleID
+        requestUrl = baseUrl + masModuleUrl + "/steps/execute"
+        
+        # Execute the decision.
+        masExecutionResponse = post(requestUrl, contentType,
+         acceptType, accessToken, requestBody)
+        
+        r_j = json.loads(masExecutionResponse.content)
+    except Exception as e:
+        msg = f'Error in call_id_api function: \n{e} \n {traceback.extract_tb(e.__traceback__)}'
+        print(msg)
+    
+    return r_j
+
 #optional - input username
 username='seford'
 
@@ -175,7 +243,7 @@ if st.button('Predict'):
     
         
         #call viya
-        response = viya_utils.call_id_api(baseUrl, token, features, moduleID1)
+        response = call_id_api(baseUrl, token, features, moduleID1)
     
         #get the response
         output_dict = viya_utils.unpack_viya_outputs(response)
