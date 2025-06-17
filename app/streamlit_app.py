@@ -133,7 +133,7 @@ st.image(image0,width=250)
 UPDATE_LOC = 'Viya Enterprise'
 #UPDATE_LOC = 'VS Code Desktop'
 #UPDATE_LOC = 'Spyder Desktop'
-UPDATE_LOC = 'SAS Enterprise Guide'
+#UPDATE_LOC = 'SAS Enterprise Guide'
 
 st.write(f'This app was last updated in {UPDATE_LOC}')
 
