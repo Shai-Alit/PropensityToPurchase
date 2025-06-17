@@ -134,6 +134,8 @@ st.image(image0,width=250)
 #UPDATE_LOC = 'VS Code Desktop'
 #UPDATE_LOC = 'Spyder Desktop'
 UPDATE_LOC = 'SAS Enterprise Guide'
+
+>>>>>>> cdbb54d7f2423b973070d43e77b877379b893145
 st.write(f'This app was last updated in {UPDATE_LOC}')
 
 st.title('Propensity to Purchase')
