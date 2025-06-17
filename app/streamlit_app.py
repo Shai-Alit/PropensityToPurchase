@@ -130,10 +130,10 @@ image0 = Image.open(settings.img_loc + '/1800flowers_logo.png')
 st.image(image0,width=250)
 #start building the web application using the streamlit components
 #UPDATE_LOC = 'Viya Workbench'
-UPDATE_LOC = 'Viya Enterprise'
+#UPDATE_LOC = 'Viya Enterprise'
 #UPDATE_LOC = 'VS Code Desktop'
 #UPDATE_LOC = 'Spyder Desktop'
-#UPDATE_LOC = 'SAS Enterprise Guide'
+UPDATE_LOC = 'SAS Enterprise Guide'
 
 st.write(f'This app was last updated in {UPDATE_LOC}')
 
