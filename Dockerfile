@@ -7,11 +7,11 @@ WORKDIR /usr/src/app
 COPY /root/requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 USER root
-RUN mkdir /opt/streamlit-example
-RUN chmod -R 777 /opt/streamlit-example
-WORKDIR /opt/streamlit-example
+RUN mkdir /opt/BaseballSalary
+RUN chmod -R 777 /opt/BaseballSalary
+WORKDIR /opt/BaseballSalary
 COPY environment.yml environment.yml
-COPY root /opt/streamlit-example/
+COPY root /opt/BaseballSalary/
 COPY run.sh run.sh
 RUN chmod a+x run.sh
 CMD ["./run.sh"]
