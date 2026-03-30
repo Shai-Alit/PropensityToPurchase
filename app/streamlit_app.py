@@ -126,7 +126,7 @@ moduleID_prefix = 'Propensity'
 decisionID1 = '8daf7f69-5e3e-4eb9-a0a5-0423fcf64fb2'
 
 
-image0 = Image.open(settings.img_loc + '/1800flowers_logo.png')
+image0 = Image.open(settings.img_loc + '/mothers_day.png')
 st.image(image0,width=250)
 #start building the web application using the streamlit components
 #UPDATE_LOC = 'Viya Workbench'
