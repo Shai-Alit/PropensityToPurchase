@@ -256,9 +256,9 @@ if st.button('Predict'):
     
     print(EM_CLASSIFICATION == '0')
     if EM_CLASSIFICATION == '1' or EM_CLASSIFICATION == 1:
-        str_output = f':blue[{Purchase_Chance}. Customer predicted to purchase with probability of {round(100*EM_PROBABILITY,2)}%]'
+        str_output = f':blue[{Purchase_Chance} - Customer predicted to purchase with probability of {round(100*EM_PROBABILITY,2)}%]'
     else:
-        str_output = f':red[{Purchase_Chance}. Customer predicted to NOT purchase with probability of {round(100*EM_PROBABILITY,2)}%]'
+        str_output = f':red[{Purchase_Chance} - Customer predicted to NOT purchase with probability of {round(100*EM_PROBABILITY,2)}%]'
         if 'recommendation' in output_dict and output_dict['recommendation'] != '':
             str_output += output_dict['recommendation']
         
